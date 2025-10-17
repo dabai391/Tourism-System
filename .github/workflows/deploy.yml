@@ -20,13 +20,18 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
+        cache: 'pnpm'  # 改为 pnpm 缓存
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8  # 可以指定你使用的 pnpm 版本
 
     - name: Install dependencies
-      run: npm install
+      run: pnpm install  # 使用 pnpm
 
     - name: Build project
-      run: npm run build
+      run: pnpm run build  # 使用 pnpm
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
